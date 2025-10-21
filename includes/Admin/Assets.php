@@ -70,9 +70,39 @@ class Assets {
             'restUrl' => rest_url('scpt/v1/'),
             'restNonce' => wp_create_nonce('wp_rest'),
             'i18n' => [
+                // Messages génériques
                 'confirm_delete' => __('Êtes-vous sûr de vouloir supprimer ce post type ?', 'simple-custom-post-type'),
                 'error_generic' => __('Une erreur est survenue', 'simple-custom-post-type'),
                 'success_saved' => __('Enregistré avec succès', 'simple-custom-post-type'),
+                
+                // Mode Simple - Labels
+                'label_plural' => __('Libellé au pluriel', 'simple-custom-post-type'),
+                'label_singular' => __('Libellé au singulier', 'simple-custom-post-type'),
+                'label_slug' => __('Clé du type de publication', 'simple-custom-post-type'),
+                'label_taxonomies' => __('Taxonomies', 'simple-custom-post-type'),
+                'label_public' => __('Public', 'simple-custom-post-type'),
+                'label_hierarchical' => __('Hiérarchique', 'simple-custom-post-type'),
+                'label_advanced' => __('Configuration avancée', 'simple-custom-post-type'),
+                
+                // Mode Simple - Placeholders
+                'placeholder_plural' => __('Films', 'simple-custom-post-type'),
+                'placeholder_singular' => __('Film', 'simple-custom-post-type'),
+                'placeholder_slug' => __('film', 'simple-custom-post-type'),
+                
+                // Mode Simple - Aide
+                'help_slug' => __('Lettres minuscules, tiret bas et tiret uniquement, maximum 20 caractères.', 'simple-custom-post-type'),
+                'help_taxonomies' => __('Sélectionnez les taxonomies existantes pour classer les éléments du type de publication.', 'simple-custom-post-type'),
+                'help_public' => __('Visible sur l\'interface publique et dans le tableau de bord de l\'administration.', 'simple-custom-post-type'),
+                'help_hierarchical' => __('Les types de publication hiérarchiques peuvent avoir des descendants (comme les pages).', 'simple-custom-post-type'),
+                'help_advanced' => __('Je sais ce que je fais, affiche-moi toutes les options.', 'simple-custom-post-type'),
+                
+                // Taxonomies
+                'taxonomy_categories' => __('Catégories', 'simple-custom-post-type'),
+                'taxonomy_tags' => __('Étiquettes', 'simple-custom-post-type'),
+                
+                // Boutons
+                'btn_create' => __('Créer le type de publication', 'simple-custom-post-type'),
+                'btn_cancel' => __('Annuler', 'simple-custom-post-type'),
             ],
         ]);
     }

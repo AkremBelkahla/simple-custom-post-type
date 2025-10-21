@@ -243,64 +243,64 @@
                         <form id="scpt-form-simple" class="scpt-form">
                             <div class="scpt-form-section">
                                 <div class="scpt-form-group">
-                                    <label for="scpt-name-simple">Libellé au pluriel *</label>
+                                    <label for="scpt-name-simple">${scptData.i18n.label_plural} *</label>
                                     <input type="text" id="scpt-name-simple" name="labels[name]" required 
-                                           placeholder="Films" class="scpt-input">
+                                           placeholder="${scptData.i18n.placeholder_plural}" class="scpt-input">
                                 </div>
 
                                 <div class="scpt-form-group">
-                                    <label for="scpt-singular-name-simple">Libellé au singulier *</label>
+                                    <label for="scpt-singular-name-simple">${scptData.i18n.label_singular} *</label>
                                     <input type="text" id="scpt-singular-name-simple" name="labels[singular_name]" required 
-                                           placeholder="Film" class="scpt-input">
+                                           placeholder="${scptData.i18n.placeholder_singular}" class="scpt-input">
                                 </div>
 
                                 <div class="scpt-form-group">
-                                    <label for="scpt-slug-simple">Clé du type de publication *</label>
+                                    <label for="scpt-slug-simple">${scptData.i18n.label_slug} *</label>
                                     <input type="text" id="scpt-slug-simple" name="slug" required pattern="[a-z0-9_-]+" 
-                                           placeholder="film" class="scpt-input">
-                                    <p class="scpt-help-text">Lettres minuscules, tiret bas et tiret uniquement, maximum 20 caractères.</p>
+                                           placeholder="${scptData.i18n.placeholder_slug}" class="scpt-input">
+                                    <p class="scpt-help-text">${scptData.i18n.help_slug}</p>
                                 </div>
 
                                 <div class="scpt-form-group">
-                                    <label for="scpt-taxonomies-simple">Taxonomies</label>
+                                    <label for="scpt-taxonomies-simple">${scptData.i18n.label_taxonomies}</label>
                                     <select id="scpt-taxonomies-simple" name="taxonomies[]" multiple class="scpt-input" size="3">
-                                        <option value="category">Catégories</option>
-                                        <option value="post_tag">Étiquettes</option>
+                                        <option value="category">${scptData.i18n.taxonomy_categories}</option>
+                                        <option value="post_tag">${scptData.i18n.taxonomy_tags}</option>
                                     </select>
-                                    <p class="scpt-help-text">Sélectionnez les taxonomies existantes pour classer les éléments du type de publication.</p>
+                                    <p class="scpt-help-text">${scptData.i18n.help_taxonomies}</p>
                                 </div>
 
                                 <div class="scpt-form-group">
                                     <label class="scpt-toggle-label">
                                         <input type="checkbox" name="public" value="1" checked class="scpt-toggle-input">
                                         <span class="scpt-toggle-slider"></span>
-                                        <span class="scpt-toggle-text">Public</span>
+                                        <span class="scpt-toggle-text">${scptData.i18n.label_public}</span>
                                     </label>
-                                    <p class="scpt-help-text">Visible sur l'interface publique et dans le tableau de bord de l'administration.</p>
+                                    <p class="scpt-help-text">${scptData.i18n.help_public}</p>
                                 </div>
 
                                 <div class="scpt-form-group">
                                     <label class="scpt-toggle-label">
                                         <input type="checkbox" name="hierarchical" value="1" class="scpt-toggle-input">
                                         <span class="scpt-toggle-slider"></span>
-                                        <span class="scpt-toggle-text">Hiérarchique</span>
+                                        <span class="scpt-toggle-text">${scptData.i18n.label_hierarchical}</span>
                                     </label>
-                                    <p class="scpt-help-text">Les types de publication hiérarchiques peuvent avoir des descendants (comme les pages).</p>
+                                    <p class="scpt-help-text">${scptData.i18n.help_hierarchical}</p>
                                 </div>
 
                                 <div class="scpt-form-group">
                                     <label class="scpt-toggle-label scpt-advanced-toggle">
                                         <input type="checkbox" id="scpt-toggle-advanced" class="scpt-toggle-input">
                                         <span class="scpt-toggle-slider"></span>
-                                        <span class="scpt-toggle-text">Configuration avancée</span>
+                                        <span class="scpt-toggle-text">${scptData.i18n.label_advanced}</span>
                                     </label>
-                                    <p class="scpt-help-text">Je sais ce que je fais, affiche-moi toutes les options.</p>
+                                    <p class="scpt-help-text">${scptData.i18n.help_advanced}</p>
                                 </div>
                             </div>
 
                             <div class="scpt-form-actions">
-                                <button type="submit" class="button button-primary button-large">Créer le type de publication</button>
-                                <a href="admin.php?page=simple-cpt" class="button button-large">Annuler</a>
+                                <button type="submit" class="button button-primary button-large">${scptData.i18n.btn_create}</button>
+                                <a href="admin.php?page=simple-cpt" class="button button-large">${scptData.i18n.btn_cancel}</a>
                             </div>
                         </form>
                     </div>

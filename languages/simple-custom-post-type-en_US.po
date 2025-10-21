@@ -1,0 +1,162 @@
+# Translation of Simple Custom Post Type in English (United States)
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Simple Custom Post Type 1.0.0\n"
+"Report-Msgid-Bugs-To: contact@infinityweb.tn\n"
+"POT-Creation-Date: 2025-01-21 12:00:00+0000\n"
+"PO-Revision-Date: 2025-10-21 15:00+0100\n"
+"Last-Translator: Akrem Belkahla <akrem.belkahla@infinityweb.tn>\n"
+"Language-Team: InfinityWeb <contact@infinityweb.tn>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0\n"
+
+#: simple-custom-post-type.php
+msgid "Simple Custom Post Type nécessite PHP %s ou supérieur. Vous utilisez actuellement PHP %s."
+msgstr "Simple Custom Post Type requires PHP %s or higher. You are currently using PHP %s."
+
+msgid "Simple Custom Post Type nécessite WordPress %s ou supérieur. Vous utilisez actuellement WordPress %s."
+msgstr "Simple Custom Post Type requires WordPress %s or higher. You are currently using WordPress %s."
+
+msgid "Erreur lors de l'initialisation de Simple Custom Post Type : %s"
+msgstr "Error initializing Simple Custom Post Type: %s"
+
+msgid "Simple Custom Post Type ne peut pas être activé car les prérequis système ne sont pas satisfaits."
+msgstr "Simple Custom Post Type cannot be activated because system requirements are not met."
+
+msgid "Erreur d'activation"
+msgstr "Activation Error"
+
+#: includes/Admin/AdminMenu.php
+msgid "Simple CPT"
+msgstr "Simple CPT"
+
+msgid "Post Types"
+msgstr "Post Types"
+
+msgid "Ajouter un Post Type"
+msgstr "Add New Post Type"
+
+msgid "Ajouter"
+msgstr "Add New"
+
+msgid "Paramètres"
+msgstr "Settings"
+
+msgid "Logs"
+msgstr "Logs"
+
+#: includes/Admin/Assets.php
+msgid "Êtes-vous sûr de vouloir supprimer ce post type ?"
+msgstr "Are you sure you want to delete this post type?"
+
+msgid "Une erreur est survenue"
+msgstr "An error occurred"
+
+msgid "Enregistré avec succès"
+msgstr "Saved successfully"
+
+msgid "Libellé au pluriel"
+msgstr "Plural Label"
+
+msgid "Libellé au singulier"
+msgstr "Singular Label"
+
+msgid "Clé du type de publication"
+msgstr "Post Type Key"
+
+msgid "Taxonomies"
+msgstr "Taxonomies"
+
+msgid "Public"
+msgstr "Public"
+
+msgid "Hiérarchique"
+msgstr "Hierarchical"
+
+msgid "Configuration avancée"
+msgstr "Advanced Configuration"
+
+msgid "Films"
+msgstr "Movies"
+
+msgid "Film"
+msgstr "Movie"
+
+msgid "film"
+msgstr "movie"
+
+msgid "Lettres minuscules, tiret bas et tiret uniquement, maximum 20 caractères."
+msgstr "Lowercase letters, underscores and hyphens only, maximum 20 characters."
+
+msgid "Sélectionnez les taxonomies existantes pour classer les éléments du type de publication."
+msgstr "Select existing taxonomies to classify post type items."
+
+msgid "Visible sur l'interface publique et dans le tableau de bord de l'administration."
+msgstr "Visible on the public interface and in the administration dashboard."
+
+msgid "Les types de publication hiérarchiques peuvent avoir des descendants (comme les pages)."
+msgstr "Hierarchical post types can have descendants (like pages)."
+
+msgid "Je sais ce que je fais, affiche-moi toutes les options."
+msgstr "I know what I'm doing, show me all options."
+
+msgid "Catégories"
+msgstr "Categories"
+
+msgid "Étiquettes"
+msgstr "Tags"
+
+msgid "Créer le type de publication"
+msgstr "Create Post Type"
+
+msgid "Annuler"
+msgstr "Cancel"
+
+#: includes/Core/Plugin.php
+msgid "Permission refusée"
+msgstr "Permission denied"
+
+msgid "Post type sauvegardé avec succès"
+msgstr "Post type saved successfully"
+
+msgid "Erreur lors de la sauvegarde"
+msgstr "Error saving"
+
+msgid "Slug invalide"
+msgstr "Invalid slug"
+
+msgid "Post type supprimé avec succès"
+msgstr "Post type deleted successfully"
+
+msgid "Erreur lors de la suppression"
+msgstr "Error deleting"
+
+#: includes/Utils/Validator.php
+msgid "Le slug est requis"
+msgstr "Slug is required"
+
+msgid "Le slug ne peut pas dépasser 20 caractères"
+msgstr "Slug cannot exceed 20 characters"
+
+msgid "Ce slug est réservé par WordPress"
+msgstr "This slug is reserved by WordPress"
+
+msgid "Le nom est requis"
+msgstr "Name is required"
+
+msgid "Le nom singulier est requis"
+msgstr "Singular name is required"
+
+msgid "La clé du champ est requise"
+msgstr "Field key is required"
+
+msgid "Type de champ invalide"
+msgstr "Invalid field type"
+
+msgid "Le label est requis"
+msgstr "Label is required"

@@ -25,6 +25,116 @@
     margin-top: 20px;
 }
 
+/* Mode Wrapper */
+.scpt-mode-wrapper {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+/* Mode Simple */
+.scpt-simple-mode {
+    display: none;
+    padding: 30px;
+}
+
+.scpt-simple-mode.active {
+    display: block;
+}
+
+.scpt-simple-mode .scpt-form-section {
+    max-width: 600px;
+}
+
+.scpt-simple-mode .scpt-form-group {
+    margin-bottom: 25px;
+}
+
+.scpt-simple-mode .scpt-form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1d2327;
+    font-size: 14px;
+}
+
+/* Mode Avancé */
+.scpt-advanced-mode {
+    display: none;
+}
+
+.scpt-advanced-mode.active {
+    display: block;
+}
+
+/* Toggle Switch Style */
+.scpt-toggle-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 12px;
+    padding: 12px 0;
+}
+
+.scpt-toggle-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.scpt-toggle-slider {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    background-color: #8c8f94;
+    border-radius: 24px;
+    transition: background-color 0.3s;
+    flex-shrink: 0;
+}
+
+.scpt-toggle-slider::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 3px;
+    top: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.scpt-toggle-input:checked + .scpt-toggle-slider {
+    background-color: #2271b1;
+}
+
+.scpt-toggle-input:checked + .scpt-toggle-slider::before {
+    transform: translateX(20px);
+}
+
+.scpt-toggle-input:focus + .scpt-toggle-slider {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #2271b1;
+}
+
+.scpt-toggle-text {
+    font-weight: 600;
+    color: #1d2327;
+    font-size: 14px;
+}
+
+.scpt-advanced-toggle {
+    border-top: 1px solid #c3c4c7;
+    padding-top: 20px;
+    margin-top: 10px;
+}
+
+.scpt-advanced-toggle .scpt-toggle-text {
+    color: #2271b1;
+}
+
 /* Tabs Navigation */
 .scpt-tabs-wrapper {
     background: #fff;
