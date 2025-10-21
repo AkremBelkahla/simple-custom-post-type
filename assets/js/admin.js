@@ -613,11 +613,35 @@
                         </form>
                     </div>
                 </div>
+                    </div>
+                </div>
             `;
 
             $container.html(html);
             
-            // Gérer les clics sur les onglets
+            // Gérer le toggle entre mode simple et avancé
+            $(document).on('change', '#scpt-toggle-advanced', function() {
+                if ($(this).is(':checked')) {
+                    // Copier les données du mode simple vers le mode avancé
+                    const simpleName = $('#scpt-name-simple').val();
+                    const simpleSingular = $('#scpt-singular-name-simple').val();
+                    const simpleSlug = $('#scpt-slug-simple').val();
+                    
+                    $('#scpt-name').val(simpleName);
+                    $('#scpt-singular-name').val(simpleSingular);
+                    $('#scpt-slug').val(simpleSlug);
+                    
+                    // Basculer vers le mode avancé
+                    $('.scpt-simple-mode').removeClass('active');
+                    $('.scpt-advanced-mode').addClass('active');
+                } else {
+                    // Retour au mode simple
+                    $('.scpt-advanced-mode').removeClass('active');
+                    $('.scpt-simple-mode').addClass('active');
+                }
+            });
+            
+            // Gérer les clics sur les onglets (mode avancé)
             $(document).on('click', '.scpt-tab-btn', function() {
                 const tab = $(this).data('tab');
                 
@@ -628,6 +652,12 @@
                 // Afficher le panel correspondant
                 $('.scpt-tab-panel').removeClass('active');
                 $(`.scpt-tab-panel[data-tab="${tab}"]`).addClass('active');
+            });
+            
+            // Gérer la soumission du formulaire simple
+            $(document).on('submit', '#scpt-form-simple', function(e) {
+                e.preventDefault();
+                SCPT.savePostType.call(this, e);
             });
         }
     };
