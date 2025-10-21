@@ -160,3 +160,157 @@ msgstr "Invalid field type"
 
 msgid "Le label est requis"
 msgstr "Label is required"
+
+#: includes/Admin/Assets.php - Onglets
+msgid "Général"
+msgstr "General"
+
+msgid "Type de Publication"
+msgstr "Post Type"
+
+msgid "Libellés"
+msgstr "Labels"
+
+msgid "Options"
+msgstr "Options"
+
+msgid "Visibilité"
+msgstr "Visibility"
+
+msgid "Permaliens"
+msgstr "Permalinks"
+
+msgid "Capacités"
+msgstr "Capabilities"
+
+msgid "API REST"
+msgstr "REST API"
+
+msgid "Nom de la fonction"
+msgstr "Function Name"
+
+msgid "La fonction utilisée dans le code."
+msgstr "The function used in the code."
+
+msgid "Domaine de texte"
+msgstr "Text Domain"
+
+msgid "Domaine de texte du fichier de traduction. Optionnel."
+msgstr "Translation file Text Domain. Optional."
+
+msgid "Clé utilisée dans le code. Jusqu'à 20 caractères, minuscules, sans espaces."
+msgstr "Key used in the code. Up to 20 characters, lowercase, no spaces."
+
+msgid "Nom (Singulier)"
+msgstr "Name (Singular)"
+
+msgid "Nom singulier du type de publication. Ex: Produit, Événement ou Film."
+msgstr "Post type singular name. e.g. Product, Event or Movie."
+
+msgid "Un court résumé descriptif du type de publication."
+msgstr "A short descriptive summary of the post type."
+
+msgid "Nom (Pluriel)"
+msgstr "Name (Plural)"
+
+msgid "Nom pluriel du type de publication. Ex: Produits, Événements ou Films."
+msgstr "Post type plural name. e.g. Products, Events or Movies."
+
+msgid "Nom du menu"
+msgstr "Menu Name"
+
+msgid "Ajouter un élément"
+msgstr "Add New Item"
+
+msgid "Modifier l'élément"
+msgstr "Edit Item"
+
+msgid "Nouvel élément"
+msgstr "New Item"
+
+msgid "Voir l'élément"
+msgstr "View Item"
+
+msgid "Voir les éléments"
+msgstr "View Items"
+
+msgid "Rechercher des éléments"
+msgstr "Search Items"
+
+msgid "Prend en charge"
+msgstr "Supports"
+
+msgid "Contenu (éditeur)"
+msgstr "Content (editor)"
+
+msgid "Extrait"
+msgstr "Excerpt"
+
+msgid "Auteur"
+msgstr "Author"
+
+msgid "Image mise en avant"
+msgstr "Featured Image"
+
+msgid "Rétroliens"
+msgstr "Trackbacks"
+
+msgid "Révisions"
+msgstr "Revisions"
+
+msgid "Champs personnalisés"
+msgstr "Custom Fields"
+
+msgid "Attributs de page"
+msgstr "Page Attributes"
+
+msgid "Formats de publication"
+msgstr "Post Formats"
+
+msgid "Afficher l'interface"
+msgstr "Show UI"
+
+msgid "Afficher l'interface d'administration pour ce type de publication."
+msgstr "Show the administration interface for this post type."
+
+msgid "Afficher dans le menu"
+msgstr "Show in Menu"
+
+msgid "Afficher dans le menu d'administration."
+msgstr "Show in admin menu."
+
+msgid "Afficher dans les menus de navigation"
+msgstr "Show in Nav Menus"
+
+msgid "Rendre disponible pour la sélection dans les menus de navigation."
+msgstr "Make available for selection in navigation menus."
+
+msgid "Possède une archive"
+msgstr "Has Archive"
+
+msgid "Active les archives pour ce type de publication."
+msgstr "Enables post type archives."
+
+msgid "Réécriture"
+msgstr "Rewrite"
+
+msgid "Personnaliser la structure des permaliens."
+msgstr "Customize permalink structure."
+
+msgid "Type de capacité"
+msgstr "Capability Type"
+
+msgid "Le type de capacité à utiliser lors de la construction des capacités de lecture, d'édition et de suppression."
+msgstr "The capability type to use when building read, edit, and delete capabilities."
+
+msgid "Afficher dans REST API"
+msgstr "Show in REST API"
+
+msgid "Exposer ce type de publication dans l'API REST WordPress."
+msgstr "Expose this post type in the WordPress REST API."
+
+msgid "Base REST"
+msgstr "REST Base"
+
+msgid "Personnaliser la base de l'URL REST pour ce type de publication."
+msgstr "Customize the REST API base URL for this post type."

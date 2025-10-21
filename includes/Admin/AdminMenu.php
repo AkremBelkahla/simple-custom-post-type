@@ -83,10 +83,57 @@ class AdminMenu {
      * @return void
      */
     public function render_main_page() {
+        // Charger la classe WP_List_Table
+        $list_table = new PostTypeListTable();
+        $list_table->prepare_items();
+
+        // Messages de notification
+        if (isset($_GET['deleted'])) {
+            $count = absint($_GET['deleted']);
+            printf(
+                '<div class="notice notice-success is-dismissible"><p>%s</p></div>',
+                sprintf(
+                    _n('%d type de publication supprimé.', '%d types de publication supprimés.', $count, 'simple-custom-post-type'),
+                    $count
+                )
+            );
+        }
+
+        if (isset($_GET['activated'])) {
+            $count = absint($_GET['activated']);
+            printf(
+                '<div class="notice notice-success is-dismissible"><p>%s</p></div>',
+                sprintf(
+                    _n('%d type de publication activé.', '%d types de publication activés.', $count, 'simple-custom-post-type'),
+                    $count
+                )
+            );
+        }
+
+        if (isset($_GET['deactivated'])) {
+            $count = absint($_GET['deactivated']);
+            printf(
+                '<div class="notice notice-success is-dismissible"><p>%s</p></div>',
+                sprintf(
+                    _n('%d type de publication désactivé.', '%d types de publication désactivés.', $count, 'simple-custom-post-type'),
+                    $count
+                )
+            );
+        }
         ?>
         <div class="wrap">
-            <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
-            <div id="scpt-app-root"></div>
+            <h1 class="wp-heading-inline"><?php echo esc_html(get_admin_page_title()); ?></h1>
+            <a href="<?php echo esc_url(admin_url('admin.php?page=simple-cpt-add')); ?>" class="page-title-action">
+                <?php _e('Ajouter', 'simple-custom-post-type'); ?>
+            </a>
+            <hr class="wp-header-end">
+
+            <form method="post">
+                <?php
+                $list_table->search_box(__('Rechercher', 'simple-custom-post-type'), 'scpt');
+                $list_table->display();
+                ?>
+            </form>
         </div>
         <?php
     }

@@ -103,6 +103,88 @@ class Assets {
                 // Boutons
                 'btn_create' => __('Créer le type de publication', 'simple-custom-post-type'),
                 'btn_cancel' => __('Annuler', 'simple-custom-post-type'),
+                
+                // Onglets
+                'tab_general' => __('Général', 'simple-custom-post-type'),
+                'tab_post_type' => __('Type de Publication', 'simple-custom-post-type'),
+                'tab_labels' => __('Libellés', 'simple-custom-post-type'),
+                'tab_options' => __('Options', 'simple-custom-post-type'),
+                'tab_visibility' => __('Visibilité', 'simple-custom-post-type'),
+                'tab_permalinks' => __('Permaliens', 'simple-custom-post-type'),
+                'tab_capabilities' => __('Capacités', 'simple-custom-post-type'),
+                'tab_rest_api' => __('API REST', 'simple-custom-post-type'),
+                
+                // Onglet Général
+                'label_function_name' => __('Nom de la fonction', 'simple-custom-post-type'),
+                'placeholder_function_name' => __('custom_post_type', 'simple-custom-post-type'),
+                'help_function_name' => __('La fonction utilisée dans le code.', 'simple-custom-post-type'),
+                'label_text_domain' => __('Domaine de texte', 'simple-custom-post-type'),
+                'placeholder_text_domain' => __('text_domain', 'simple-custom-post-type'),
+                'help_text_domain' => __('Domaine de texte du fichier de traduction. Optionnel.', 'simple-custom-post-type'),
+                
+                // Onglet Post Type
+                'label_post_type_key' => __('Clé du type de publication', 'simple-custom-post-type'),
+                'placeholder_post_type_key' => __('post_type', 'simple-custom-post-type'),
+                'help_post_type_key' => __('Clé utilisée dans le code. Jusqu\'à 20 caractères, minuscules, sans espaces.', 'simple-custom-post-type'),
+                'label_name_singular' => __('Nom (Singulier)', 'simple-custom-post-type'),
+                'placeholder_name_singular' => __('Type de Publication', 'simple-custom-post-type'),
+                'help_name_singular' => __('Nom singulier du type de publication. Ex: Produit, Événement ou Film.', 'simple-custom-post-type'),
+                'label_description' => __('Description', 'simple-custom-post-type'),
+                'placeholder_description' => __('Description du type de publication', 'simple-custom-post-type'),
+                'help_description' => __('Un court résumé descriptif du type de publication.', 'simple-custom-post-type'),
+                'label_name_plural' => __('Nom (Pluriel)', 'simple-custom-post-type'),
+                'placeholder_name_plural' => __('Types de Publication', 'simple-custom-post-type'),
+                'help_name_plural' => __('Nom pluriel du type de publication. Ex: Produits, Événements ou Films.', 'simple-custom-post-type'),
+                
+                // Onglet Labels
+                'label_menu_name' => __('Nom du menu', 'simple-custom-post-type'),
+                'label_add_new' => __('Ajouter', 'simple-custom-post-type'),
+                'label_add_new_item' => __('Ajouter un élément', 'simple-custom-post-type'),
+                'label_edit_item' => __('Modifier l\'élément', 'simple-custom-post-type'),
+                'label_new_item' => __('Nouvel élément', 'simple-custom-post-type'),
+                'label_view_item' => __('Voir l\'élément', 'simple-custom-post-type'),
+                'label_view_items' => __('Voir les éléments', 'simple-custom-post-type'),
+                'label_search_items' => __('Rechercher des éléments', 'simple-custom-post-type'),
+                
+                // Onglet Options
+                'label_supports' => __('Prend en charge', 'simple-custom-post-type'),
+                'support_title' => __('Titre', 'simple-custom-post-type'),
+                'support_editor' => __('Contenu (éditeur)', 'simple-custom-post-type'),
+                'support_excerpt' => __('Extrait', 'simple-custom-post-type'),
+                'support_author' => __('Auteur', 'simple-custom-post-type'),
+                'support_thumbnail' => __('Image mise en avant', 'simple-custom-post-type'),
+                'support_comments' => __('Commentaires', 'simple-custom-post-type'),
+                'support_trackbacks' => __('Rétroliens', 'simple-custom-post-type'),
+                'support_revisions' => __('Révisions', 'simple-custom-post-type'),
+                'support_custom_fields' => __('Champs personnalisés', 'simple-custom-post-type'),
+                'support_page_attributes' => __('Attributs de page', 'simple-custom-post-type'),
+                'support_post_formats' => __('Formats de publication', 'simple-custom-post-type'),
+                
+                // Onglet Visibility
+                'label_public' => __('Public', 'simple-custom-post-type'),
+                'help_public' => __('Visible sur l\'interface publique et dans le tableau de bord de l\'administration.', 'simple-custom-post-type'),
+                'label_show_ui' => __('Afficher l\'interface', 'simple-custom-post-type'),
+                'help_show_ui' => __('Afficher l\'interface d\'administration pour ce type de publication.', 'simple-custom-post-type'),
+                'label_show_in_menu' => __('Afficher dans le menu', 'simple-custom-post-type'),
+                'help_show_in_menu' => __('Afficher dans le menu d\'administration.', 'simple-custom-post-type'),
+                'label_show_in_nav_menus' => __('Afficher dans les menus de navigation', 'simple-custom-post-type'),
+                'help_show_in_nav_menus' => __('Rendre disponible pour la sélection dans les menus de navigation.', 'simple-custom-post-type'),
+                
+                // Onglet Permalinks
+                'label_has_archive' => __('Possède une archive', 'simple-custom-post-type'),
+                'help_has_archive' => __('Active les archives pour ce type de publication.', 'simple-custom-post-type'),
+                'label_rewrite' => __('Réécriture', 'simple-custom-post-type'),
+                'help_rewrite' => __('Personnaliser la structure des permaliens.', 'simple-custom-post-type'),
+                
+                // Onglet Capabilities
+                'label_capability_type' => __('Type de capacité', 'simple-custom-post-type'),
+                'help_capability_type' => __('Le type de capacité à utiliser lors de la construction des capacités de lecture, d\'édition et de suppression.', 'simple-custom-post-type'),
+                
+                // Onglet REST API
+                'label_show_in_rest' => __('Afficher dans REST API', 'simple-custom-post-type'),
+                'help_show_in_rest' => __('Exposer ce type de publication dans l\'API REST WordPress.', 'simple-custom-post-type'),
+                'label_rest_base' => __('Base REST', 'simple-custom-post-type'),
+                'help_rest_base' => __('Personnaliser la base de l\'URL REST pour ce type de publication.', 'simple-custom-post-type'),
             ],
         ]);
     }

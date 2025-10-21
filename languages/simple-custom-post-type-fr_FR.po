@@ -160,3 +160,157 @@ msgstr "Type de champ invalide"
 
 msgid "Le label est requis"
 msgstr "Le libellé est requis"
+
+#: includes/Admin/Assets.php - Onglets
+msgid "Général"
+msgstr "Général"
+
+msgid "Type de Publication"
+msgstr "Type de Publication"
+
+msgid "Libellés"
+msgstr "Libellés"
+
+msgid "Options"
+msgstr "Options"
+
+msgid "Visibilité"
+msgstr "Visibilité"
+
+msgid "Permaliens"
+msgstr "Permaliens"
+
+msgid "Capacités"
+msgstr "Capacités"
+
+msgid "API REST"
+msgstr "API REST"
+
+msgid "Nom de la fonction"
+msgstr "Nom de la fonction"
+
+msgid "La fonction utilisée dans le code."
+msgstr "La fonction utilisée dans le code."
+
+msgid "Domaine de texte"
+msgstr "Domaine de texte"
+
+msgid "Domaine de texte du fichier de traduction. Optionnel."
+msgstr "Domaine de texte du fichier de traduction. Optionnel."
+
+msgid "Clé utilisée dans le code. Jusqu'à 20 caractères, minuscules, sans espaces."
+msgstr "Clé utilisée dans le code. Jusqu'à 20 caractères, minuscules, sans espaces."
+
+msgid "Nom (Singulier)"
+msgstr "Nom (Singulier)"
+
+msgid "Nom singulier du type de publication. Ex: Produit, Événement ou Film."
+msgstr "Nom singulier du type de publication. Ex: Produit, Événement ou Film."
+
+msgid "Un court résumé descriptif du type de publication."
+msgstr "Un court résumé descriptif du type de publication."
+
+msgid "Nom (Pluriel)"
+msgstr "Nom (Pluriel)"
+
+msgid "Nom pluriel du type de publication. Ex: Produits, Événements ou Films."
+msgstr "Nom pluriel du type de publication. Ex: Produits, Événements ou Films."
+
+msgid "Nom du menu"
+msgstr "Nom du menu"
+
+msgid "Ajouter un élément"
+msgstr "Ajouter un élément"
+
+msgid "Modifier l'élément"
+msgstr "Modifier l'élément"
+
+msgid "Nouvel élément"
+msgstr "Nouvel élément"
+
+msgid "Voir l'élément"
+msgstr "Voir l'élément"
+
+msgid "Voir les éléments"
+msgstr "Voir les éléments"
+
+msgid "Rechercher des éléments"
+msgstr "Rechercher des éléments"
+
+msgid "Prend en charge"
+msgstr "Prend en charge"
+
+msgid "Contenu (éditeur)"
+msgstr "Contenu (éditeur)"
+
+msgid "Extrait"
+msgstr "Extrait"
+
+msgid "Auteur"
+msgstr "Auteur"
+
+msgid "Image mise en avant"
+msgstr "Image mise en avant"
+
+msgid "Rétroliens"
+msgstr "Rétroliens"
+
+msgid "Révisions"
+msgstr "Révisions"
+
+msgid "Champs personnalisés"
+msgstr "Champs personnalisés"
+
+msgid "Attributs de page"
+msgstr "Attributs de page"
+
+msgid "Formats de publication"
+msgstr "Formats de publication"
+
+msgid "Afficher l'interface"
+msgstr "Afficher l'interface"
+
+msgid "Afficher l'interface d'administration pour ce type de publication."
+msgstr "Afficher l'interface d'administration pour ce type de publication."
+
+msgid "Afficher dans le menu"
+msgstr "Afficher dans le menu"
+
+msgid "Afficher dans le menu d'administration."
+msgstr "Afficher dans le menu d'administration."
+
+msgid "Afficher dans les menus de navigation"
+msgstr "Afficher dans les menus de navigation"
+
+msgid "Rendre disponible pour la sélection dans les menus de navigation."
+msgstr "Rendre disponible pour la sélection dans les menus de navigation."
+
+msgid "Possède une archive"
+msgstr "Possède une archive"
+
+msgid "Active les archives pour ce type de publication."
+msgstr "Active les archives pour ce type de publication."
+
+msgid "Réécriture"
+msgstr "Réécriture"
+
+msgid "Personnaliser la structure des permaliens."
+msgstr "Personnaliser la structure des permaliens."
+
+msgid "Type de capacité"
+msgstr "Type de capacité"
+
+msgid "Le type de capacité à utiliser lors de la construction des capacités de lecture, d'édition et de suppression."
+msgstr "Le type de capacité à utiliser lors de la construction des capacités de lecture, d'édition et de suppression."
+
+msgid "Afficher dans REST API"
+msgstr "Afficher dans REST API"
+
+msgid "Exposer ce type de publication dans l'API REST WordPress."
+msgstr "Exposer ce type de publication dans l'API REST WordPress."
+
+msgid "Base REST"
+msgstr "Base REST"
+
+msgid "Personnaliser la base de l'URL REST pour ce type de publication."
+msgstr "Personnaliser la base de l'URL REST pour ce type de publication."

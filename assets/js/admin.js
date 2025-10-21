@@ -241,84 +241,74 @@
                     <nav class="scpt-tabs-nav">
                         <button type="button" class="scpt-tab-btn active" data-tab="general">
                             <span class="dashicons dashicons-admin-generic"></span>
-                            General
-                        </button>
-                        <button type="button" class="scpt-tab-btn" data-tab="post-type">
-                            <span class="dashicons dashicons-admin-post"></span>
-                            Post Type
+                            ${scptData.i18n.tab_general}
                         </button>
                         <button type="button" class="scpt-tab-btn" data-tab="labels">
                             <span class="dashicons dashicons-tag"></span>
-                            Labels
+                            ${scptData.i18n.tab_labels}
                         </button>
                         <button type="button" class="scpt-tab-btn" data-tab="options">
                             <span class="dashicons dashicons-admin-settings"></span>
-                            Options
+                            ${scptData.i18n.tab_options}
                         </button>
                         <button type="button" class="scpt-tab-btn" data-tab="visibility">
                             <span class="dashicons dashicons-visibility"></span>
-                            Visibility
+                            ${scptData.i18n.tab_visibility}
                         </button>
                         <button type="button" class="scpt-tab-btn" data-tab="permalinks">
                             <span class="dashicons dashicons-admin-links"></span>
-                            Permalinks
+                            ${scptData.i18n.tab_permalinks}
                         </button>
                         <button type="button" class="scpt-tab-btn" data-tab="capabilities">
                             <span class="dashicons dashicons-admin-users"></span>
-                            Capabilities
+                            ${scptData.i18n.tab_capabilities}
                         </button>
                         <button type="button" class="scpt-tab-btn" data-tab="rest-api">
                             <span class="dashicons dashicons-rest-api"></span>
-                            Rest API
+                            ${scptData.i18n.tab_rest_api}
                         </button>
                     </nav>
 
                     <div class="scpt-tabs-content">
                         <form id="scpt-form" class="scpt-form">
-                            <!-- Tab: General -->
+                            <!-- Tab: General (fusionné avec Post Type) -->
                             <div class="scpt-tab-panel active" data-tab="general">
                                 <div class="scpt-form-grid">
                                     <div class="scpt-form-group">
-                                        <label for="scpt-function-name">Function Name</label>
-                                        <input type="text" id="scpt-function-name" name="function_name" 
-                                               placeholder="custom_post_type" class="scpt-input">
-                                        <p class="scpt-help-text">The function used in the code.</p>
-                                    </div>
-                                    <div class="scpt-form-group">
-                                        <label for="scpt-text-domain">Text Domain</label>
-                                        <input type="text" id="scpt-text-domain" name="text_domain" 
-                                               placeholder="text_domain" class="scpt-input">
-                                        <p class="scpt-help-text">Translation file Text Domain. Optional.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Tab: Post Type -->
-                            <div class="scpt-tab-panel" data-tab="post-type">
-                                <div class="scpt-form-grid">
-                                    <div class="scpt-form-group">
-                                        <label for="scpt-slug">Post Type Key *</label>
+                                        <label for="scpt-slug">${scptData.i18n.label_post_type_key} *</label>
                                         <input type="text" id="scpt-slug" name="slug" required pattern="[a-z0-9_-]+" 
-                                               placeholder="post_type" class="scpt-input">
-                                        <p class="scpt-help-text">Key used in the code. Up to 20 characters, lowercase, no spaces.</p>
+                                               placeholder="${scptData.i18n.placeholder_post_type_key}" class="scpt-input">
+                                        <p class="scpt-help-text">${scptData.i18n.help_post_type_key}</p>
                                     </div>
                                     <div class="scpt-form-group">
-                                        <label for="scpt-singular-name">Name (Singular) *</label>
+                                        <label for="scpt-singular-name">${scptData.i18n.label_name_singular} *</label>
                                         <input type="text" id="scpt-singular-name" name="labels[singular_name]" required 
-                                               placeholder="Post Type" class="scpt-input">
-                                        <p class="scpt-help-text">Post type singular name. e.g. Product, Event or Movie.</p>
+                                               placeholder="${scptData.i18n.placeholder_name_singular}" class="scpt-input">
+                                        <p class="scpt-help-text">${scptData.i18n.help_name_singular}</p>
                                     </div>
                                     <div class="scpt-form-group">
-                                        <label for="scpt-description">Description</label>
-                                        <input type="text" id="scpt-description" name="description" 
-                                               placeholder="Post Type Description" class="scpt-input">
-                                        <p class="scpt-help-text">A short descriptive summary of the post type.</p>
-                                    </div>
-                                    <div class="scpt-form-group">
-                                        <label for="scpt-name">Name (Plural) *</label>
+                                        <label for="scpt-name">${scptData.i18n.label_name_plural} *</label>
                                         <input type="text" id="scpt-name" name="labels[name]" required 
-                                               placeholder="Post Types" class="scpt-input">
-                                        <p class="scpt-help-text">Post type plural name. e.g. Products, Events or Movies.</p>
+                                               placeholder="${scptData.i18n.placeholder_name_plural}" class="scpt-input">
+                                        <p class="scpt-help-text">${scptData.i18n.help_name_plural}</p>
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-description">${scptData.i18n.label_description}</label>
+                                        <input type="text" id="scpt-description" name="description" 
+                                               placeholder="${scptData.i18n.placeholder_description}" class="scpt-input">
+                                        <p class="scpt-help-text">${scptData.i18n.help_description}</p>
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-function-name">${scptData.i18n.label_function_name}</label>
+                                        <input type="text" id="scpt-function-name" name="function_name" 
+                                               placeholder="${scptData.i18n.placeholder_function_name}" class="scpt-input">
+                                        <p class="scpt-help-text">${scptData.i18n.help_function_name}</p>
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-text-domain">${scptData.i18n.label_text_domain}</label>
+                                        <input type="text" id="scpt-text-domain" name="text_domain" 
+                                               placeholder="${scptData.i18n.placeholder_text_domain}" class="scpt-input">
+                                        <p class="scpt-help-text">${scptData.i18n.help_text_domain}</p>
                                     </div>
                                 </div>
                             </div>
@@ -327,44 +317,44 @@
                             <div class="scpt-tab-panel" data-tab="labels">
                                 <div class="scpt-form-grid scpt-grid-4">
                                     <div class="scpt-form-group">
-                                        <label for="scpt-label-menu-name">Menu Name</label>
+                                        <label for="scpt-label-menu-name">${scptData.i18n.label_menu_name}</label>
                                         <input type="text" id="scpt-label-menu-name" name="labels[menu_name]" 
-                                               placeholder="Post Types" class="scpt-input">
+                                               placeholder="${scptData.i18n.placeholder_name_plural}" class="scpt-input">
                                     </div>
                                     <div class="scpt-form-group">
-                                        <label for="scpt-label-add-new">Add New</label>
+                                        <label for="scpt-label-add-new">${scptData.i18n.label_add_new}</label>
                                         <input type="text" id="scpt-label-add-new" name="labels[add_new]" 
-                                               placeholder="Add New" class="scpt-input">
+                                               placeholder="${scptData.i18n.label_add_new}" class="scpt-input">
                                     </div>
                                     <div class="scpt-form-group">
-                                        <label for="scpt-label-add-new-item">Add New Item</label>
+                                        <label for="scpt-label-add-new-item">${scptData.i18n.label_add_new_item}</label>
                                         <input type="text" id="scpt-label-add-new-item" name="labels[add_new_item]" 
-                                               placeholder="Add New Post Type" class="scpt-input">
+                                               placeholder="${scptData.i18n.label_add_new_item}" class="scpt-input">
                                     </div>
                                     <div class="scpt-form-group">
-                                        <label for="scpt-label-edit-item">Edit Item</label>
+                                        <label for="scpt-label-edit-item">${scptData.i18n.label_edit_item}</label>
                                         <input type="text" id="scpt-label-edit-item" name="labels[edit_item]" 
-                                               placeholder="Edit Post Type" class="scpt-input">
+                                               placeholder="${scptData.i18n.label_edit_item}" class="scpt-input">
                                     </div>
                                     <div class="scpt-form-group">
-                                        <label for="scpt-label-new-item">New Item</label>
+                                        <label for="scpt-label-new-item">${scptData.i18n.label_new_item}</label>
                                         <input type="text" id="scpt-label-new-item" name="labels[new_item]" 
-                                               placeholder="New Post Type" class="scpt-input">
+                                               placeholder="${scptData.i18n.label_new_item}" class="scpt-input">
                                     </div>
                                     <div class="scpt-form-group">
-                                        <label for="scpt-label-view-item">View Item</label>
+                                        <label for="scpt-label-view-item">${scptData.i18n.label_view_item}</label>
                                         <input type="text" id="scpt-label-view-item" name="labels[view_item]" 
-                                               placeholder="View Post Type" class="scpt-input">
+                                               placeholder="${scptData.i18n.label_view_item}" class="scpt-input">
                                     </div>
                                     <div class="scpt-form-group">
-                                        <label for="scpt-label-view-items">View Items</label>
+                                        <label for="scpt-label-view-items">${scptData.i18n.label_view_items}</label>
                                         <input type="text" id="scpt-label-view-items" name="labels[view_items]" 
-                                               placeholder="View Post Types" class="scpt-input">
+                                               placeholder="${scptData.i18n.label_view_items}" class="scpt-input">
                                     </div>
                                     <div class="scpt-form-group">
-                                        <label for="scpt-label-search-items">Search Items</label>
+                                        <label for="scpt-label-search-items">${scptData.i18n.label_search_items}</label>
                                         <input type="text" id="scpt-label-search-items" name="labels[search_items]" 
-                                               placeholder="Search Post Types" class="scpt-input">
+                                               placeholder="${scptData.i18n.label_search_items}" class="scpt-input">
                                     </div>
                                 </div>
                             </div>
@@ -373,19 +363,19 @@
                             <div class="scpt-tab-panel" data-tab="options">
                                 <div class="scpt-form-grid">
                                     <div class="scpt-form-group">
-                                        <label>Supports</label>
+                                        <label>${scptData.i18n.label_supports}</label>
                                         <div class="scpt-checkbox-group">
-                                            <label><input type="checkbox" name="supports[title]" value="1" checked> Title</label>
-                                            <label><input type="checkbox" name="supports[editor]" value="1" checked> Content (editor)</label>
-                                            <label><input type="checkbox" name="supports[excerpt]" value="1"> Excerpt</label>
-                                            <label><input type="checkbox" name="supports[author]" value="1"> Author</label>
-                                            <label><input type="checkbox" name="supports[thumbnail]" value="1"> Featured Image</label>
-                                            <label><input type="checkbox" name="supports[comments]" value="1"> Comments</label>
-                                            <label><input type="checkbox" name="supports[trackbacks]" value="1"> Trackbacks</label>
-                                            <label><input type="checkbox" name="supports[revisions]" value="1"> Revisions</label>
-                                            <label><input type="checkbox" name="supports[custom-fields]" value="1"> Custom Fields</label>
-                                            <label><input type="checkbox" name="supports[page-attributes]" value="1"> Page Attributes</label>
-                                            <label><input type="checkbox" name="supports[post-formats]" value="1"> Post Formats</label>
+                                            <label><input type="checkbox" name="supports[title]" value="1" checked> ${scptData.i18n.support_title}</label>
+                                            <label><input type="checkbox" name="supports[editor]" value="1" checked> ${scptData.i18n.support_editor}</label>
+                                            <label><input type="checkbox" name="supports[excerpt]" value="1"> ${scptData.i18n.support_excerpt}</label>
+                                            <label><input type="checkbox" name="supports[author]" value="1"> ${scptData.i18n.support_author}</label>
+                                            <label><input type="checkbox" name="supports[thumbnail]" value="1"> ${scptData.i18n.support_thumbnail}</label>
+                                            <label><input type="checkbox" name="supports[comments]" value="1"> ${scptData.i18n.support_comments}</label>
+                                            <label><input type="checkbox" name="supports[trackbacks]" value="1"> ${scptData.i18n.support_trackbacks}</label>
+                                            <label><input type="checkbox" name="supports[revisions]" value="1"> ${scptData.i18n.support_revisions}</label>
+                                            <label><input type="checkbox" name="supports[custom-fields]" value="1"> ${scptData.i18n.support_custom_fields}</label>
+                                            <label><input type="checkbox" name="supports[page-attributes]" value="1"> ${scptData.i18n.support_page_attributes}</label>
+                                            <label><input type="checkbox" name="supports[post-formats]" value="1"> ${scptData.i18n.support_post_formats}</label>
                                         </div>
                                     </div>
                                     <div class="scpt-form-group">
@@ -537,8 +527,8 @@
                             </div>
 
                             <div class="scpt-form-actions">
-                                <button type="submit" class="button button-primary button-large">Créer le post type</button>
-                                <a href="admin.php?page=simple-cpt" class="button button-large">Annuler</a>
+                                <button type="submit" class="button button-primary button-large">${scptData.i18n.btn_create}</button>
+                                <a href="admin.php?page=simple-cpt" class="button button-large">${scptData.i18n.btn_cancel}</a>
                             </div>
                         </form>
                     </div>
