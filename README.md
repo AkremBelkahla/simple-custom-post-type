@@ -9,11 +9,12 @@ Plugin WordPress moderne et professionnel pour créer et gérer des Custom Post 
 ## ✨ Fonctionnalités
 
 - 🎨 **Interface moderne à onglets** - Design inspiré de CPT UI avec navigation intuitive
+- 🎯 **Mode Simple & Avancé** - Interface adaptée à tous les niveaux (débutant/expert)
 - 🔧 **Configuration complète** - 8 onglets organisés (General, Post Type, Labels, Options, Visibility, Permalinks, Capabilities, Rest API)
 - 🛡️ **Sécurité renforcée** - Validation stricte et sanitization
 - 📊 **Gestion des champs** - Support de tous les types de champs
 - 🔍 **Système de logs** - Traçabilité complète des actions
-- 🌐 **Multilingue** - Support i18n/l10n
+- 🌐 **Multilingue** - Translation ready (Français 🇫🇷 / Anglais 🇬🇧)
 - ⚡ **Performance optimisée** - Cache et lazy loading
 - 📱 **Responsive** - Compatible mobile et tablette (grille adaptative)
 - 🔌 **REST API** - Exposition des CPT via l'API REST
