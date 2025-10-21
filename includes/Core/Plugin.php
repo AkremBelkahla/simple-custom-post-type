@@ -155,7 +155,11 @@ class Plugin {
         }
 
         try {
-            $data = json_decode(file_get_contents('php://input'), true);
+            // Récupérer les données du formulaire
+            $data = $_POST;
+            
+            // Nettoyer les données inutiles
+            unset($data['action'], $data['nonce']);
             
             // Valider les données
             $validator = new Validator();

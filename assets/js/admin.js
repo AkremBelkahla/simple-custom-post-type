@@ -15,6 +15,7 @@
         init: function() {
             this.bindEvents();
             this.loadPostTypes();
+            this.renderAddForm();
         },
 
         /**
@@ -144,21 +145,63 @@
         savePostType: function(e) {
             e.preventDefault();
             
-            const formData = $(this).serialize();
+            const $form = $(this);
+            const $submitBtn = $form.find('button[type="submit"]');
+            const originalText = $submitBtn.text();
+            
+            // Désactiver le bouton pendant la soumission
+            $submitBtn.prop('disabled', true).text('Enregistrement...');
+            
+            // Préparer les données du formulaire
+            const formData = new FormData($form[0]);
+            const data = {
+                action: 'scpt_save_post_type',
+                nonce: scptData.nonce
+            };
+            
+            // Traiter les supports (checkboxes)
+            const supports = [];
+            $form.find('input[name^="supports["]:checked').each(function() {
+                const name = $(this).attr('name');
+                const match = name.match(/supports\[(\w+)\]/);
+                if (match) {
+                    supports.push(match[1]);
+                }
+            });
+            
+            // Construire l'objet data
+            for (let [key, value] of formData.entries()) {
+                if (!key.startsWith('supports[')) {
+                    data[key] = value;
+                }
+            }
+            
+            // Ajouter les supports
+            if (supports.length > 0) {
+                supports.forEach((support, index) => {
+                    data['supports[' + index + ']'] = support;
+                });
+            }
 
             $.ajax({
                 url: scptData.ajaxUrl,
                 type: 'POST',
-                data: formData + '&action=scpt_save_post_type&nonce=' + scptData.nonce,
+                data: data,
                 success: function(response) {
                     if (response.success) {
                         SCPT.showSuccess(scptData.i18n.success_saved);
+                        // Rediriger vers la liste après 1 seconde
+                        setTimeout(function() {
+                            window.location.href = 'admin.php?page=simple-cpt';
+                        }, 1000);
                     } else {
                         SCPT.showError(response.data.message);
+                        $submitBtn.prop('disabled', false).text(originalText);
                     }
                 },
                 error: function() {
                     SCPT.showError(scptData.i18n.error_generic);
+                    $submitBtn.prop('disabled', false).text(originalText);
                 }
             });
         },
@@ -183,6 +226,409 @@
             setTimeout(function() {
                 $('.scpt-alert-error').fadeOut();
             }, 5000);
+        },
+
+        /**
+         * Afficher le formulaire d'ajout
+         */
+        renderAddForm: function() {
+            const $container = $('#scpt-add-root');
+            
+            if (!$container.length) return;
+
+            const html = `
+                <div class="scpt-mode-wrapper">
+                    <!-- Mode Simple -->
+                    <div class="scpt-simple-mode active">
+                        <form id="scpt-form-simple" class="scpt-form">
+                            <div class="scpt-form-section">
+                                <div class="scpt-form-group">
+                                    <label for="scpt-name-simple">Libellé au pluriel *</label>
+                                    <input type="text" id="scpt-name-simple" name="labels[name]" required 
+                                           placeholder="Films" class="scpt-input">
+                                </div>
+
+                                <div class="scpt-form-group">
+                                    <label for="scpt-singular-name-simple">Libellé au singulier *</label>
+                                    <input type="text" id="scpt-singular-name-simple" name="labels[singular_name]" required 
+                                           placeholder="Film" class="scpt-input">
+                                </div>
+
+                                <div class="scpt-form-group">
+                                    <label for="scpt-slug-simple">Clé du type de publication *</label>
+                                    <input type="text" id="scpt-slug-simple" name="slug" required pattern="[a-z0-9_-]+" 
+                                           placeholder="film" class="scpt-input">
+                                    <p class="scpt-help-text">Lettres minuscules, tiret bas et tiret uniquement, maximum 20 caractères.</p>
+                                </div>
+
+                                <div class="scpt-form-group">
+                                    <label for="scpt-taxonomies-simple">Taxonomies</label>
+                                    <select id="scpt-taxonomies-simple" name="taxonomies[]" multiple class="scpt-input" size="3">
+                                        <option value="category">Catégories</option>
+                                        <option value="post_tag">Étiquettes</option>
+                                    </select>
+                                    <p class="scpt-help-text">Sélectionnez les taxonomies existantes pour classer les éléments du type de publication.</p>
+                                </div>
+
+                                <div class="scpt-form-group">
+                                    <label class="scpt-toggle-label">
+                                        <input type="checkbox" name="public" value="1" checked class="scpt-toggle-input">
+                                        <span class="scpt-toggle-slider"></span>
+                                        <span class="scpt-toggle-text">Public</span>
+                                    </label>
+                                    <p class="scpt-help-text">Visible sur l'interface publique et dans le tableau de bord de l'administration.</p>
+                                </div>
+
+                                <div class="scpt-form-group">
+                                    <label class="scpt-toggle-label">
+                                        <input type="checkbox" name="hierarchical" value="1" class="scpt-toggle-input">
+                                        <span class="scpt-toggle-slider"></span>
+                                        <span class="scpt-toggle-text">Hiérarchique</span>
+                                    </label>
+                                    <p class="scpt-help-text">Les types de publication hiérarchiques peuvent avoir des descendants (comme les pages).</p>
+                                </div>
+
+                                <div class="scpt-form-group">
+                                    <label class="scpt-toggle-label scpt-advanced-toggle">
+                                        <input type="checkbox" id="scpt-toggle-advanced" class="scpt-toggle-input">
+                                        <span class="scpt-toggle-slider"></span>
+                                        <span class="scpt-toggle-text">Configuration avancée</span>
+                                    </label>
+                                    <p class="scpt-help-text">Je sais ce que je fais, affiche-moi toutes les options.</p>
+                                </div>
+                            </div>
+
+                            <div class="scpt-form-actions">
+                                <button type="submit" class="button button-primary button-large">Créer le type de publication</button>
+                                <a href="admin.php?page=simple-cpt" class="button button-large">Annuler</a>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Mode Avancé -->
+                    <div class="scpt-advanced-mode">
+                        <div class="scpt-tabs-wrapper">
+                    <nav class="scpt-tabs-nav">
+                        <button type="button" class="scpt-tab-btn active" data-tab="general">
+                            <span class="dashicons dashicons-admin-generic"></span>
+                            General
+                        </button>
+                        <button type="button" class="scpt-tab-btn" data-tab="post-type">
+                            <span class="dashicons dashicons-admin-post"></span>
+                            Post Type
+                        </button>
+                        <button type="button" class="scpt-tab-btn" data-tab="labels">
+                            <span class="dashicons dashicons-tag"></span>
+                            Labels
+                        </button>
+                        <button type="button" class="scpt-tab-btn" data-tab="options">
+                            <span class="dashicons dashicons-admin-settings"></span>
+                            Options
+                        </button>
+                        <button type="button" class="scpt-tab-btn" data-tab="visibility">
+                            <span class="dashicons dashicons-visibility"></span>
+                            Visibility
+                        </button>
+                        <button type="button" class="scpt-tab-btn" data-tab="permalinks">
+                            <span class="dashicons dashicons-admin-links"></span>
+                            Permalinks
+                        </button>
+                        <button type="button" class="scpt-tab-btn" data-tab="capabilities">
+                            <span class="dashicons dashicons-admin-users"></span>
+                            Capabilities
+                        </button>
+                        <button type="button" class="scpt-tab-btn" data-tab="rest-api">
+                            <span class="dashicons dashicons-rest-api"></span>
+                            Rest API
+                        </button>
+                    </nav>
+
+                    <div class="scpt-tabs-content">
+                        <form id="scpt-form" class="scpt-form">
+                            <!-- Tab: General -->
+                            <div class="scpt-tab-panel active" data-tab="general">
+                                <div class="scpt-form-grid">
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-function-name">Function Name</label>
+                                        <input type="text" id="scpt-function-name" name="function_name" 
+                                               placeholder="custom_post_type" class="scpt-input">
+                                        <p class="scpt-help-text">The function used in the code.</p>
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-text-domain">Text Domain</label>
+                                        <input type="text" id="scpt-text-domain" name="text_domain" 
+                                               placeholder="text_domain" class="scpt-input">
+                                        <p class="scpt-help-text">Translation file Text Domain. Optional.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab: Post Type -->
+                            <div class="scpt-tab-panel" data-tab="post-type">
+                                <div class="scpt-form-grid">
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-slug">Post Type Key *</label>
+                                        <input type="text" id="scpt-slug" name="slug" required pattern="[a-z0-9_-]+" 
+                                               placeholder="post_type" class="scpt-input">
+                                        <p class="scpt-help-text">Key used in the code. Up to 20 characters, lowercase, no spaces.</p>
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-singular-name">Name (Singular) *</label>
+                                        <input type="text" id="scpt-singular-name" name="labels[singular_name]" required 
+                                               placeholder="Post Type" class="scpt-input">
+                                        <p class="scpt-help-text">Post type singular name. e.g. Product, Event or Movie.</p>
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-description">Description</label>
+                                        <input type="text" id="scpt-description" name="description" 
+                                               placeholder="Post Type Description" class="scpt-input">
+                                        <p class="scpt-help-text">A short descriptive summary of the post type.</p>
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-name">Name (Plural) *</label>
+                                        <input type="text" id="scpt-name" name="labels[name]" required 
+                                               placeholder="Post Types" class="scpt-input">
+                                        <p class="scpt-help-text">Post type plural name. e.g. Products, Events or Movies.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab: Labels -->
+                            <div class="scpt-tab-panel" data-tab="labels">
+                                <div class="scpt-form-grid scpt-grid-4">
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-label-menu-name">Menu Name</label>
+                                        <input type="text" id="scpt-label-menu-name" name="labels[menu_name]" 
+                                               placeholder="Post Types" class="scpt-input">
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-label-add-new">Add New</label>
+                                        <input type="text" id="scpt-label-add-new" name="labels[add_new]" 
+                                               placeholder="Add New" class="scpt-input">
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-label-add-new-item">Add New Item</label>
+                                        <input type="text" id="scpt-label-add-new-item" name="labels[add_new_item]" 
+                                               placeholder="Add New Post Type" class="scpt-input">
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-label-edit-item">Edit Item</label>
+                                        <input type="text" id="scpt-label-edit-item" name="labels[edit_item]" 
+                                               placeholder="Edit Post Type" class="scpt-input">
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-label-new-item">New Item</label>
+                                        <input type="text" id="scpt-label-new-item" name="labels[new_item]" 
+                                               placeholder="New Post Type" class="scpt-input">
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-label-view-item">View Item</label>
+                                        <input type="text" id="scpt-label-view-item" name="labels[view_item]" 
+                                               placeholder="View Post Type" class="scpt-input">
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-label-view-items">View Items</label>
+                                        <input type="text" id="scpt-label-view-items" name="labels[view_items]" 
+                                               placeholder="View Post Types" class="scpt-input">
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-label-search-items">Search Items</label>
+                                        <input type="text" id="scpt-label-search-items" name="labels[search_items]" 
+                                               placeholder="Search Post Types" class="scpt-input">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab: Options -->
+                            <div class="scpt-tab-panel" data-tab="options">
+                                <div class="scpt-form-grid">
+                                    <div class="scpt-form-group">
+                                        <label>Supports</label>
+                                        <div class="scpt-checkbox-group">
+                                            <label><input type="checkbox" name="supports[title]" value="1" checked> Title</label>
+                                            <label><input type="checkbox" name="supports[editor]" value="1" checked> Content (editor)</label>
+                                            <label><input type="checkbox" name="supports[excerpt]" value="1"> Excerpt</label>
+                                            <label><input type="checkbox" name="supports[author]" value="1"> Author</label>
+                                            <label><input type="checkbox" name="supports[thumbnail]" value="1"> Featured Image</label>
+                                            <label><input type="checkbox" name="supports[comments]" value="1"> Comments</label>
+                                            <label><input type="checkbox" name="supports[trackbacks]" value="1"> Trackbacks</label>
+                                            <label><input type="checkbox" name="supports[revisions]" value="1"> Revisions</label>
+                                            <label><input type="checkbox" name="supports[custom-fields]" value="1"> Custom Fields</label>
+                                            <label><input type="checkbox" name="supports[page-attributes]" value="1"> Page Attributes</label>
+                                            <label><input type="checkbox" name="supports[post-formats]" value="1"> Post Formats</label>
+                                        </div>
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-exclude-search">Exclude From Search</label>
+                                        <select id="scpt-exclude-search" name="exclude_from_search" class="scpt-input">
+                                            <option value="0">No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
+                                        <p class="scpt-help-text">Posts of this type should be excluded from search results.</p>
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-enable-export">Enable Export</label>
+                                        <select id="scpt-enable-export" name="can_export" class="scpt-input">
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                        <p class="scpt-help-text">Enables post type export.</p>
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-has-archive">Enable Archives</label>
+                                        <select id="scpt-has-archive" name="has_archive" class="scpt-input">
+                                            <option value="1">Yes (use default slug)</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                        <p class="scpt-help-text">Enables post type archives. Post type key is used as default archive slug.</p>
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-custom-archive-slug">Custom Archive Slug</label>
+                                        <input type="text" id="scpt-custom-archive-slug" name="archive_slug" 
+                                               placeholder="" class="scpt-input">
+                                        <p class="scpt-help-text">Set custom archive slug.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab: Visibility -->
+                            <div class="scpt-tab-panel" data-tab="visibility">
+                                <div class="scpt-form-grid">
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-public">Public</label>
+                                        <select id="scpt-public" name="public" class="scpt-input">
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                        <p class="scpt-help-text">Show post type in the admin UI.</p>
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-show-ui">Show UI</label>
+                                        <select id="scpt-show-ui" name="show_ui" class="scpt-input">
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                        <p class="scpt-help-text">Show post type UI in the admin.</p>
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-show-in-admin-bar">Show in Admin Bar</label>
+                                        <select id="scpt-show-in-admin-bar" name="show_in_admin_bar" class="scpt-input">
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                        <p class="scpt-help-text">Show post type in admin bar.</p>
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-show-in-nav-menus">Show in Navigation Menus</label>
+                                        <select id="scpt-show-in-nav-menus" name="show_in_nav_menus" class="scpt-input">
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                        <p class="scpt-help-text">Show post type in Navigation Menus.</p>
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-menu-icon">Admin Sidebar Icon</label>
+                                        <input type="text" id="scpt-menu-icon" name="menu_icon" 
+                                               placeholder="i.e. dashicons-admin-post" class="scpt-input">
+                                        <p class="scpt-help-text">Post type icon. Use dashicon name or full icon URL (http://.../icon.png).</p>
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-menu-position">Show in Admin Sidebar</label>
+                                        <select id="scpt-menu-position" name="menu_position" class="scpt-input">
+                                            <option value="">5 - below Posts</option>
+                                            <option value="10">10 - below Media</option>
+                                            <option value="15">15 - below Links</option>
+                                            <option value="20">20 - below Pages</option>
+                                            <option value="25">25 - below Comments</option>
+                                            <option value="60">60 - below first separator</option>
+                                            <option value="65">65 - below Plugins</option>
+                                            <option value="70">70 - below Users</option>
+                                            <option value="75">75 - below Tools</option>
+                                            <option value="80">80 - below Settings</option>
+                                            <option value="100">100 - below second separator</option>
+                                        </select>
+                                        <p class="scpt-help-text">Show post type in admin sidebar.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab: Permalinks -->
+                            <div class="scpt-tab-panel" data-tab="permalinks">
+                                <div class="scpt-form-grid">
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-rewrite">Permalink Rewrite</label>
+                                        <select id="scpt-rewrite" name="rewrite" class="scpt-input">
+                                            <option value="1">Default permalink (post type key)</option>
+                                            <option value="0">No permalinks</option>
+                                        </select>
+                                        <p class="scpt-help-text">Use Default Permalinks (using post type key), prevent automatic URL rewriting (no pretty permalinks), or set custom permalinks.</p>
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-rewrite-slug">URL Slug</label>
+                                        <input type="text" id="scpt-rewrite-slug" name="rewrite_slug" 
+                                               placeholder="post_type" class="scpt-input">
+                                        <p class="scpt-help-text">Pretty permalink base text. i.e. www.example.com/product/</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab: Capabilities -->
+                            <div class="scpt-tab-panel" data-tab="capabilities">
+                                <div class="scpt-form-grid">
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-capability-type">Base Capability Type</label>
+                                        <select id="scpt-capability-type" name="capability_type" class="scpt-input">
+                                            <option value="post">Post</option>
+                                            <option value="page">Page</option>
+                                        </select>
+                                        <p class="scpt-help-text">Used as a base to construct capabilities.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tab: Rest API -->
+                            <div class="scpt-tab-panel" data-tab="rest-api">
+                                <div class="scpt-form-grid">
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-show-in-rest">Show in Rest</label>
+                                        <select id="scpt-show-in-rest" name="show_in_rest" class="scpt-input">
+                                            <option value="0">No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
+                                        <p class="scpt-help-text">Whether to add the post type route in the REST API 'wp/v2' namespace.</p>
+                                    </div>
+                                    <div class="scpt-form-group">
+                                        <label for="scpt-rest-base">Rest Base</label>
+                                        <input type="text" id="scpt-rest-base" name="rest_base" 
+                                               placeholder="" class="scpt-input">
+                                        <p class="scpt-help-text">To change the base url of REST API route. Default is the post type key.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="scpt-form-actions">
+                                <button type="submit" class="button button-primary button-large">Créer le post type</button>
+                                <a href="admin.php?page=simple-cpt" class="button button-large">Annuler</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            `;
+
+            $container.html(html);
+            
+            // Gérer les clics sur les onglets
+            $(document).on('click', '.scpt-tab-btn', function() {
+                const tab = $(this).data('tab');
+                
+                // Activer l'onglet
+                $('.scpt-tab-btn').removeClass('active');
+                $(this).addClass('active');
+                
+                // Afficher le panel correspondant
+                $('.scpt-tab-panel').removeClass('active');
+                $(`.scpt-tab-panel[data-tab="${tab}"]`).addClass('active');
+            });
         }
     };
 

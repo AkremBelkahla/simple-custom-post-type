@@ -8,14 +8,14 @@ Plugin WordPress moderne et professionnel pour créer et gérer des Custom Post 
 
 ## ✨ Fonctionnalités
 
-- 🎨 **Interface moderne et intuitive** - UI/UX optimisée
-- 🔧 **Configuration complète** - Tous les paramètres WordPress disponibles
+- 🎨 **Interface moderne à onglets** - Design inspiré de CPT UI avec navigation intuitive
+- 🔧 **Configuration complète** - 8 onglets organisés (General, Post Type, Labels, Options, Visibility, Permalinks, Capabilities, Rest API)
 - 🛡️ **Sécurité renforcée** - Validation stricte et sanitization
 - 📊 **Gestion des champs** - Support de tous les types de champs
 - 🔍 **Système de logs** - Traçabilité complète des actions
 - 🌐 **Multilingue** - Support i18n/l10n
 - ⚡ **Performance optimisée** - Cache et lazy loading
-- 📱 **Responsive** - Compatible mobile et tablette
+- 📱 **Responsive** - Compatible mobile et tablette (grille adaptative)
 - 🔌 **REST API** - Exposition des CPT via l'API REST
 - 📝 **Documentation complète** - Code documenté et testé
 
@@ -98,13 +98,17 @@ Gestion des menus d'administration.
 ### Créer un Custom Post Type
 
 1. Aller dans **Simple CPT > Ajouter**
-2. Remplir les informations :
-   - Slug (max 20 caractères)
-   - Nom (pluriel et singulier)
-   - Options d'affichage
-   - Supports (titre, éditeur, image, etc.)
-   - Taxonomies associées
-3. Cliquer sur "Enregistrer"
+2. Naviguer entre les onglets pour configurer :
+   - **General** : Function Name, Text Domain
+   - **Post Type** : Slug (max 20 caractères), Noms (pluriel/singulier), Description
+   - **Labels** : Personnaliser tous les labels (Menu Name, Add New, Edit Item, etc.)
+   - **Options** : Supports (titre, éditeur, image, etc.), Archives, Export
+   - **Visibility** : Visibilité dans l'admin, menu, navigation
+   - **Permalinks** : Configuration des URLs
+   - **Capabilities** : Permissions de base
+   - **Rest API** : Exposition via l'API REST
+3. Cliquer sur "Créer le post type"
+4. Redirection automatique vers la liste avec message de succès
 
 ### Configuration
 
