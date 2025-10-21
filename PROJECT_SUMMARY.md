@@ -11,7 +11,7 @@ Plugin WordPress professionnel pour la gestion de Custom Post Types, créé le 2
 ### Fichiers créés : 23
 
 #### Core (3 fichiers)
-- ✅ `advanced-cpt-manager.php` - Fichier principal du plugin
+- ✅ `simple-custom-post-type.php` - Fichier principal du plugin
 - ✅ `uninstall.php` - Script de désinstallation
 - ✅ `LICENSE` - Licence GPL v2
 
