@@ -1,0 +1,151 @@
+# Copyright (C) 2025 Simple Custom Post Type
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Simple Custom Post Type 1.0.0\n"
+"Report-Msgid-Bugs-To: contact@infinityweb.tn\n"
+"POT-Creation-Date: 2025-01-21 12:00:00+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: InfinityWeb <contact@infinityweb.tn>\n"
+
+#: simple-custom-post-type.php
+msgid "Simple Custom Post Type nécessite PHP %s ou supérieur. Vous utilisez actuellement PHP %s."
+msgstr ""
+
+msgid "Simple Custom Post Type nécessite WordPress %s ou supérieur. Vous utilisez actuellement WordPress %s."
+msgstr ""
+
+msgid "Erreur lors de l'initialisation de Simple Custom Post Type : %s"
+msgstr ""
+
+msgid "Simple Custom Post Type ne peut pas être activé car les prérequis système ne sont pas satisfaits."
+msgstr ""
+
+msgid "Erreur d'activation"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php
+msgid "Simple CPT"
+msgstr ""
+
+msgid "Post Types"
+msgstr ""
+
+msgid "Ajouter un Post Type"
+msgstr ""
+
+msgid "Ajouter"
+msgstr ""
+
+msgid "Paramètres"
+msgstr ""
+
+msgid "Logs"
+msgstr ""
+
+msgid "Activer les logs"
+msgstr ""
+
+msgid "Enregistrer les actions dans la base de données"
+msgstr ""
+
+msgid "Rétention des logs (jours)"
+msgstr ""
+
+msgid "Nombre de jours de conservation des logs"
+msgstr ""
+
+msgid "Activer REST API"
+msgstr ""
+
+msgid "Exposer les post types via l'API REST"
+msgstr ""
+
+msgid "Activer Gutenberg"
+msgstr ""
+
+msgid "Utiliser l'éditeur Gutenberg par défaut"
+msgstr ""
+
+msgid "Supprimer les données"
+msgstr ""
+
+msgid "Supprimer toutes les données lors de la désinstallation"
+msgstr ""
+
+msgid "Enregistrer les paramètres"
+msgstr ""
+
+msgid "Paramètres enregistrés avec succès"
+msgstr ""
+
+#: includes/Core/Plugin.php
+msgid "Permission refusée"
+msgstr ""
+
+msgid "Post type sauvegardé avec succès"
+msgstr ""
+
+msgid "Erreur lors de la sauvegarde"
+msgstr ""
+
+msgid "Slug invalide"
+msgstr ""
+
+msgid "Post type supprimé avec succès"
+msgstr ""
+
+msgid "Erreur lors de la suppression"
+msgstr ""
+
+#: includes/PostTypes/Manager.php
+msgid "Tous les %s"
+msgstr ""
+
+msgid "Ajouter %s"
+msgstr ""
+
+msgid "Modifier %s"
+msgstr ""
+
+msgid "Nouveau %s"
+msgstr ""
+
+msgid "Voir %s"
+msgstr ""
+
+msgid "Rechercher %s"
+msgstr ""
+
+msgid "Aucun élément trouvé"
+msgstr ""
+
+msgid "Aucun élément dans la corbeille"
+msgstr ""
+
+#: includes/Utils/Validator.php
+msgid "Le slug est requis"
+msgstr ""
+
+msgid "Le slug ne peut pas dépasser 20 caractères"
+msgstr ""
+
+msgid "Ce slug est réservé par WordPress"
+msgstr ""
+
+msgid "Le nom est requis"
+msgstr ""
+
+msgid "Le nom singulier est requis"
+msgstr ""
+
+msgid "La clé du champ est requise"
+msgstr ""
+
+msgid "Type de champ invalide"
+msgstr ""
+
+msgid "Le label est requis"
+msgstr ""

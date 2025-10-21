@@ -1,0 +1,43 @@
+{
+    "name": "infinityweb/simple-custom-post-type",
+    "description": "Plugin WordPress moderne pour créer et gérer des Custom Post Types",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Akrem Belkahla",
+            "email": "contact@infinityweb.tn",
+            "homepage": "https://infinityweb.tn",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "composer/installers": "^1.0 || ^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "squizlabs/php_codesniffer": "^3.6",
+        "wp-coding-standards/wpcs": "^2.3",
+        "phpcompatibility/phpcompatibility-wp": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "SimpleCustomPostType\\": "includes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SimpleCustomPostType\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "phpcs": "phpcs --standard=WordPress includes/",
+        "phpcbf": "phpcbf --standard=WordPress includes/"
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
