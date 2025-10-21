@@ -237,77 +237,7 @@
             if (!$container.length) return;
 
             const html = `
-                <div class="scpt-mode-wrapper">
-                    <!-- Mode Simple -->
-                    <div class="scpt-simple-mode active">
-                        <form id="scpt-form-simple" class="scpt-form">
-                            <div class="scpt-form-section">
-                                <div class="scpt-form-group">
-                                    <label for="scpt-name-simple">${scptData.i18n.label_plural} *</label>
-                                    <input type="text" id="scpt-name-simple" name="labels[name]" required 
-                                           placeholder="${scptData.i18n.placeholder_plural}" class="scpt-input">
-                                </div>
-
-                                <div class="scpt-form-group">
-                                    <label for="scpt-singular-name-simple">${scptData.i18n.label_singular} *</label>
-                                    <input type="text" id="scpt-singular-name-simple" name="labels[singular_name]" required 
-                                           placeholder="${scptData.i18n.placeholder_singular}" class="scpt-input">
-                                </div>
-
-                                <div class="scpt-form-group">
-                                    <label for="scpt-slug-simple">${scptData.i18n.label_slug} *</label>
-                                    <input type="text" id="scpt-slug-simple" name="slug" required pattern="[a-z0-9_-]+" 
-                                           placeholder="${scptData.i18n.placeholder_slug}" class="scpt-input">
-                                    <p class="scpt-help-text">${scptData.i18n.help_slug}</p>
-                                </div>
-
-                                <div class="scpt-form-group">
-                                    <label for="scpt-taxonomies-simple">${scptData.i18n.label_taxonomies}</label>
-                                    <select id="scpt-taxonomies-simple" name="taxonomies[]" multiple class="scpt-input" size="3">
-                                        <option value="category">${scptData.i18n.taxonomy_categories}</option>
-                                        <option value="post_tag">${scptData.i18n.taxonomy_tags}</option>
-                                    </select>
-                                    <p class="scpt-help-text">${scptData.i18n.help_taxonomies}</p>
-                                </div>
-
-                                <div class="scpt-form-group">
-                                    <label class="scpt-toggle-label">
-                                        <input type="checkbox" name="public" value="1" checked class="scpt-toggle-input">
-                                        <span class="scpt-toggle-slider"></span>
-                                        <span class="scpt-toggle-text">${scptData.i18n.label_public}</span>
-                                    </label>
-                                    <p class="scpt-help-text">${scptData.i18n.help_public}</p>
-                                </div>
-
-                                <div class="scpt-form-group">
-                                    <label class="scpt-toggle-label">
-                                        <input type="checkbox" name="hierarchical" value="1" class="scpt-toggle-input">
-                                        <span class="scpt-toggle-slider"></span>
-                                        <span class="scpt-toggle-text">${scptData.i18n.label_hierarchical}</span>
-                                    </label>
-                                    <p class="scpt-help-text">${scptData.i18n.help_hierarchical}</p>
-                                </div>
-
-                                <div class="scpt-form-group">
-                                    <label class="scpt-toggle-label scpt-advanced-toggle">
-                                        <input type="checkbox" id="scpt-toggle-advanced" class="scpt-toggle-input">
-                                        <span class="scpt-toggle-slider"></span>
-                                        <span class="scpt-toggle-text">${scptData.i18n.label_advanced}</span>
-                                    </label>
-                                    <p class="scpt-help-text">${scptData.i18n.help_advanced}</p>
-                                </div>
-                            </div>
-
-                            <div class="scpt-form-actions">
-                                <button type="submit" class="button button-primary button-large">${scptData.i18n.btn_create}</button>
-                                <a href="admin.php?page=simple-cpt" class="button button-large">${scptData.i18n.btn_cancel}</a>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Mode Avancé -->
-                    <div class="scpt-advanced-mode">
-                        <div class="scpt-tabs-wrapper">
+                <div class="scpt-tabs-wrapper">
                     <nav class="scpt-tabs-nav">
                         <button type="button" class="scpt-tab-btn active" data-tab="general">
                             <span class="dashicons dashicons-admin-generic"></span>
@@ -613,35 +543,11 @@
                         </form>
                     </div>
                 </div>
-                    </div>
-                </div>
             `;
 
             $container.html(html);
             
-            // Gérer le toggle entre mode simple et avancé
-            $(document).on('change', '#scpt-toggle-advanced', function() {
-                if ($(this).is(':checked')) {
-                    // Copier les données du mode simple vers le mode avancé
-                    const simpleName = $('#scpt-name-simple').val();
-                    const simpleSingular = $('#scpt-singular-name-simple').val();
-                    const simpleSlug = $('#scpt-slug-simple').val();
-                    
-                    $('#scpt-name').val(simpleName);
-                    $('#scpt-singular-name').val(simpleSingular);
-                    $('#scpt-slug').val(simpleSlug);
-                    
-                    // Basculer vers le mode avancé
-                    $('.scpt-simple-mode').removeClass('active');
-                    $('.scpt-advanced-mode').addClass('active');
-                } else {
-                    // Retour au mode simple
-                    $('.scpt-advanced-mode').removeClass('active');
-                    $('.scpt-simple-mode').addClass('active');
-                }
-            });
-            
-            // Gérer les clics sur les onglets (mode avancé)
+            // Gérer les clics sur les onglets
             $(document).on('click', '.scpt-tab-btn', function() {
                 const tab = $(this).data('tab');
                 
@@ -652,12 +558,6 @@
                 // Afficher le panel correspondant
                 $('.scpt-tab-panel').removeClass('active');
                 $(`.scpt-tab-panel[data-tab="${tab}"]`).addClass('active');
-            });
-            
-            // Gérer la soumission du formulaire simple
-            $(document).on('submit', '#scpt-form-simple', function(e) {
-                e.preventDefault();
-                SCPT.savePostType.call(this, e);
             });
         }
     };

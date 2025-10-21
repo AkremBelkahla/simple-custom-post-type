@@ -1,161 +1,160 @@
 # Simple Custom Post Type
 
-Plugin WordPress moderne et professionnel pour créer et gérer des Custom Post Types avec une interface intuitive.
+Modern and professional WordPress plugin to create and manage Custom Post Types with an intuitive interface.
 
 ## 📋 Description
 
-**Simple Custom Post Type** est un plugin WordPress qui permet de créer et gérer facilement des Custom Post Types (CPT) avec tous les champs possibles. Il offre une interface moderne, une architecture robuste et respecte tous les standards WordPress.
+**Simple Custom Post Type** is a WordPress plugin that allows you to easily create and manage Custom Post Types (CPT) with all possible fields. It offers a modern interface, robust architecture, and respects all WordPress standards.
 
-## ✨ Fonctionnalités
+## ✨ Features
 
-- 🎨 **Interface moderne à onglets** - Design inspiré de CPT UI avec navigation intuitive
-- 🎯 **Mode Simple & Avancé** - Interface adaptée à tous les niveaux (débutant/expert)
-- 🔧 **Configuration complète** - 8 onglets organisés (General, Post Type, Labels, Options, Visibility, Permalinks, Capabilities, Rest API)
-- 🛡️ **Sécurité renforcée** - Validation stricte et sanitization
-- 📊 **Gestion des champs** - Support de tous les types de champs
-- 🔍 **Système de logs** - Traçabilité complète des actions
-- 🌐 **Multilingue** - Translation ready (Français 🇫🇷 / Anglais 🇬🇧)
-- ⚡ **Performance optimisée** - Cache et lazy loading
-- 📱 **Responsive** - Compatible mobile et tablette (grille adaptative)
-- 🔌 **REST API** - Exposition des CPT via l'API REST
-- 📝 **Documentation complète** - Code documenté et testé
+- 🎨 **Modern Tabbed Interface** - Design inspired by CPT UI with intuitive navigation
+- 🔧 **Complete Configuration** - 8 organized tabs (General, Post Type, Labels, Options, Visibility, Permalinks, Capabilities, Rest API)
+- 🛡️ **Enhanced Security** - Strict validation and sanitization
+- 📊 **Field Management** - Support for all field types
+- 🔍 **Logging System** - Complete action traceability
+- 🌐 **Multilingual** - Translation ready (French 🇫🇷 / English 🇬🇧)
+- ⚡ **Optimized Performance** - Cache and lazy loading
+- 📱 **Responsive** - Mobile and tablet compatible (adaptive grid)
+- 🔌 **REST API** - CPT exposure via REST API
+- 📝 **Complete Documentation** - Documented and tested code
 
 ## 🚀 Installation
 
-1. Télécharger le plugin
-2. Décompresser dans `/wp-content/plugins/`
-3. Activer depuis l'administration WordPress
-4. Accéder au menu "Simple CPT"
+1. Download the plugin
+2. Extract to `/wp-content/plugins/`
+3. Activate from WordPress admin
+4. Access the "Simple CPT" menu
 
-### Prérequis
+### Requirements
 
-- WordPress 6.0 ou supérieur
-- PHP 7.4 ou supérieur
-- MySQL 5.7 ou supérieur
+- WordPress 6.0 or higher
+- PHP 7.4 or higher
+- MySQL 5.7 or higher
 
-## 📁 Structure du Plugin
+## 📁 Plugin Structure
 
 ```
 simple-custom-post-type/
-├── simple-custom-post-type.php # Fichier principal
-├── uninstall.php               # Désinstallation
+├── simple-custom-post-type.php # Main file
+├── uninstall.php               # Uninstallation
 ├── README.md                   # Documentation
-├── CHANGELOG.md                # Historique des versions
-├── includes/                   # Classes PHP
-│   ├── Core/                   # Noyau du plugin
-│   │   ├── Plugin.php          # Classe principale (Singleton)
+├── CHANGELOG.md                # Version history
+├── includes/                   # PHP Classes
+│   ├── Core/                   # Plugin core
+│   │   ├── Plugin.php          # Main class (Singleton)
 │   │   ├── Activator.php       # Activation
-│   │   └── Deactivator.php     # Désactivation
-│   ├── PostTypes/              # Gestion des CPT
-│   │   └── Manager.php         # Gestionnaire de CPT
-│   ├── Admin/                  # Interface d'administration
-│   │   ├── AdminMenu.php       # Menus admin
-│   │   └── Assets.php          # Chargement des assets
-│   └── Utils/                  # Utilitaires
-│       ├── Logger.php          # Système de logs
-│       ├── Validator.php       # Validation des données
-│       └── Cache.php           # Gestion du cache
-├── assets/                     # Ressources front-end
+│   │   └── Deactivator.php     # Deactivation
+│   ├── PostTypes/              # CPT Management
+│   │   └── Manager.php         # CPT Manager
+│   ├── Admin/                  # Admin interface
+│   │   ├── AdminMenu.php       # Admin menus
+│   │   └── Assets.php          # Assets loading
+│   └── Utils/                  # Utilities
+│       ├── Logger.php          # Logging system
+│       ├── Validator.php       # Data validation
+│       └── Cache.php           # Cache management
+├── assets/                     # Front-end resources
 │   ├── css/
-│   │   └── admin.css           # Styles admin
+│   │   └── admin.css           # Admin styles
 │   └── js/
-│       └── admin.js            # Scripts admin
-├── languages/                  # Traductions
+│       └── admin.js            # Admin scripts
+├── languages/                  # Translations
 │   └── simple-custom-post-type.pot
-└── tests/                      # Tests unitaires
+└── tests/                      # Unit tests
     └── phpunit.xml
 ```
 
 ## 🎯 Architecture
 
-### Principes de conception
+### Design Principles
 
-1. **Séparation des responsabilités** - Chaque classe a une responsabilité unique
-2. **Singleton Pattern** - Classe principale en singleton
-3. **PSR-4 Autoloading** - Chargement automatique des classes
-4. **Namespace** - Organisation avec `SimpleCustomPostType\`
-5. **Hooks WordPress** - Utilisation des actions et filtres
-6. **Sécurité** - Validation, sanitization, nonces, capabilities
+1. **Separation of Concerns** - Each class has a single responsibility
+2. **Singleton Pattern** - Main class as singleton
+3. **PSR-4 Autoloading** - Automatic class loading
+4. **Namespace** - Organization with `SimpleCustomPostType\`
+5. **WordPress Hooks** - Use of actions and filters
+6. **Security** - Validation, sanitization, nonces, capabilities
 
-### Composants principaux
+### Main Components
 
 #### Core\Plugin
-Classe principale du plugin (Singleton). Gère l'initialisation et coordonne les autres composants.
+Main plugin class (Singleton). Handles initialization and coordinates other components.
 
 #### PostTypes\Manager
-Gestionnaire des Custom Post Types. Enregistre, sauvegarde, supprime et récupère les CPT.
+Custom Post Types manager. Registers, saves, deletes, and retrieves CPTs.
 
 #### Utils\Logger
-Système de logging avec différents niveaux (debug, info, warning, error, critical).
+Logging system with different levels (debug, info, warning, error, critical).
 
 #### Utils\Validator
-Validation et sanitization des données entrantes.
+Validation and sanitization of incoming data.
 
 #### Admin\AdminMenu
-Gestion des menus d'administration.
+Administration menu management.
 
-## 💻 Utilisation
+## 💻 Usage
 
-### Créer un Custom Post Type
+### Create a Custom Post Type
 
-1. Aller dans **Simple CPT > Ajouter**
-2. Naviguer entre les onglets pour configurer :
-   - **General** : Function Name, Text Domain
-   - **Post Type** : Slug (max 20 caractères), Noms (pluriel/singulier), Description
-   - **Labels** : Personnaliser tous les labels (Menu Name, Add New, Edit Item, etc.)
-   - **Options** : Supports (titre, éditeur, image, etc.), Archives, Export
-   - **Visibility** : Visibilité dans l'admin, menu, navigation
-   - **Permalinks** : Configuration des URLs
-   - **Capabilities** : Permissions de base
-   - **Rest API** : Exposition via l'API REST
-3. Cliquer sur "Créer le post type"
-4. Redirection automatique vers la liste avec message de succès
+1. Go to **Simple CPT > Add New**
+2. Navigate between tabs to configure:
+   - **General**: Function Name, Text Domain
+   - **Post Type**: Slug (max 20 characters), Names (plural/singular), Description
+   - **Labels**: Customize all labels (Menu Name, Add New, Edit Item, etc.)
+   - **Options**: Supports (title, editor, image, etc.), Archives, Export
+   - **Visibility**: Visibility in admin, menu, navigation
+   - **Permalinks**: URL configuration
+   - **Capabilities**: Base permissions
+   - **Rest API**: REST API exposure
+3. Click "Create Post Type"
+4. Automatic redirect to list with success message
 
 ### Configuration
 
-Accéder à **Simple CPT > Paramètres** pour configurer :
+Access **Simple CPT > Settings** to configure:
 
-- **Logs** : Activer/désactiver l'enregistrement des logs
-- **Rétention** : Durée de conservation des logs (jours)
-- **REST API** : Exposer les CPT via l'API REST
-- **Gutenberg** : Activer l'éditeur Gutenberg
-- **Désinstallation** : Supprimer les données à la désinstallation
+- **Logs**: Enable/disable log recording
+- **Retention**: Log retention duration (days)
+- **REST API**: Expose CPTs via REST API
+- **Gutenberg**: Enable Gutenberg editor
+- **Uninstall**: Delete data on uninstall
 
-### Consulter les logs
+### View Logs
 
-Accéder à **Simple CPT > Logs** pour voir l'historique des actions.
+Access **Simple CPT > Logs** to view action history.
 
-## 🔒 Sécurité
+## 🔒 Security
 
-Le plugin implémente plusieurs couches de sécurité :
+The plugin implements multiple security layers:
 
-- **Nonces** : Vérification des requêtes AJAX
-- **Capabilities** : Vérification des permissions utilisateur
-- **Sanitization** : Nettoyage de toutes les données entrantes
-- **Validation** : Vérification de la validité des données
-- **Prepared Statements** : Protection contre les injections SQL
-- **Escaping** : Protection XSS sur les sorties
+- **Nonces**: AJAX request verification
+- **Capabilities**: User permission verification
+- **Sanitization**: Cleaning of all incoming data
+- **Validation**: Data validity verification
+- **Prepared Statements**: SQL injection protection
+- **Escaping**: XSS protection on outputs
 
-## 📊 Base de données
+## 📊 Database
 
-Le plugin crée 3 tables :
+The plugin creates 3 tables:
 
 ### wp_scpt_post_types
-Stocke les configurations des Custom Post Types.
+Stores Custom Post Type configurations.
 
 ```sql
 id, slug, config, is_active, created_at, updated_at
 ```
 
 ### wp_scpt_fields
-Stocke les champs personnalisés.
+Stores custom fields.
 
 ```sql
 id, post_type_slug, field_key, field_config, field_order, is_active, created_at, updated_at
 ```
 
 ### wp_scpt_logs
-Stocke les logs d'activité.
+Stores activity logs.
 
 ```sql
 id, level, message, context, user_id, ip_address, created_at
@@ -163,129 +162,129 @@ id, level, message, context, user_id, ip_address, created_at
 
 ## 🔌 API
 
-### Actions WordPress
+### WordPress Actions
 
 ```php
-// Avant l'enregistrement d'un post type
+// Before registering a post type
 do_action('scpt_before_register_post_type', $slug, $args);
 
-// Après l'enregistrement d'un post type
+// After registering a post type
 do_action('scpt_after_register_post_type', $slug, $args);
 
-// Avant la sauvegarde
+// Before saving
 do_action('scpt_before_save_post_type', $data);
 
-// Après la sauvegarde
+// After saving
 do_action('scpt_after_save_post_type', $data);
 ```
 
-### Filtres WordPress
+### WordPress Filters
 
 ```php
-// Modifier les arguments d'un post type
+// Modify post type arguments
 add_filter('scpt_post_type_args', function($args, $config) {
-    // Modifier $args
+    // Modify $args
     return $args;
 }, 10, 2);
 
-// Modifier les slugs réservés
+// Modify reserved slugs
 add_filter('scpt_reserved_slugs', function($slugs) {
-    $slugs[] = 'mon-slug-reserve';
+    $slugs[] = 'my-reserved-slug';
     return $slugs;
 });
 ```
 
 ### REST API
 
-Endpoints disponibles :
+Available endpoints:
 
-- `GET /wp-json/scpt/v1/post-types` - Liste des post types
-- `POST /wp-json/scpt/v1/post-types` - Créer un post type
-- `GET /wp-json/scpt/v1/post-types/{slug}` - Récupérer un post type
-- `PUT /wp-json/scpt/v1/post-types/{slug}` - Mettre à jour un post type
-- `DELETE /wp-json/scpt/v1/post-types/{slug}` - Supprimer un post type
+- `GET /wp-json/scpt/v1/post-types` - List post types
+- `POST /wp-json/scpt/v1/post-types` - Create a post type
+- `GET /wp-json/scpt/v1/post-types/{slug}` - Get a post type
+- `PUT /wp-json/scpt/v1/post-types/{slug}` - Update a post type
+- `DELETE /wp-json/scpt/v1/post-types/{slug}` - Delete a post type
 
 ## 🧪 Tests
 
-### Tests unitaires
+### Unit Tests
 
 ```bash
-# Installer PHPUnit
+# Install PHPUnit
 composer install
 
-# Lancer les tests
+# Run tests
 ./vendor/bin/phpunit
 ```
 
-### Tests manuels
+### Manual Tests
 
-1. Créer un post type
-2. Vérifier l'affichage dans le menu admin
-3. Créer un post de ce type
-4. Vérifier l'affichage public
-5. Modifier le post type
-6. Supprimer le post type
+1. Create a post type
+2. Check display in admin menu
+3. Create a post of this type
+4. Check public display
+5. Edit the post type
+6. Delete the post type
 
-## 📝 Standards de code
+## 📝 Code Standards
 
-Le plugin respecte :
+The plugin follows:
 
-- **WordPress Coding Standards** - PHPCS avec les règles WordPress
-- **PSR-4** - Autoloading des classes
-- **PSR-12** - Style de code
-- **Documentation** - PHPDoc pour toutes les fonctions
-- **Sécurité** - OWASP Top 10
+- **WordPress Coding Standards** - PHPCS with WordPress rules
+- **PSR-4** - Class autoloading
+- **PSR-12** - Code style
+- **Documentation** - PHPDoc for all functions
+- **Security** - OWASP Top 10
 
 ## 🔄 Versioning
 
-Le plugin utilise le **Semantic Versioning** (SemVer) :
+The plugin uses **Semantic Versioning** (SemVer):
 
-- **MAJOR** : Changements incompatibles
-- **MINOR** : Nouvelles fonctionnalités compatibles
-- **PATCH** : Corrections de bugs
+- **MAJOR**: Incompatible changes
+- **MINOR**: New compatible features
+- **PATCH**: Bug fixes
 
-## 👨‍💻 Développement
+## 👨‍💻 Development
 
-### Contribuer
+### Contributing
 
-1. Fork le projet
-2. Créer une branche (`git checkout -b feature/AmazingFeature`)
-3. Commit les changements (`git commit -m 'Add AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrir une Pull Request
+1. Fork the project
+2. Create a branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### Conventions de commit
+### Commit Conventions
 
-- `feat:` Nouvelle fonctionnalité
-- `fix:` Correction de bug
+- `feat:` New feature
+- `fix:` Bug fix
 - `docs:` Documentation
-- `style:` Formatage
+- `style:` Formatting
 - `refactor:` Refactoring
 - `test:` Tests
 - `chore:` Maintenance
 
-## 📄 Licence
+## 📄 License
 
 GPL v2 or later - https://www.gnu.org/licenses/gpl-2.0.html
 
-## 👤 Auteur
+## 👤 Author
 
 **Akrem Belkahla**
 - Email: contact@infinityweb.tn
 - Website: https://infinityweb.tn
 
-## 🏢 Agence
+## 🏢 Agency
 
 **InfinityWeb**
 - Website: https://infinityweb.tn
 
 ## 📞 Support
 
-Pour toute question ou problème :
-- Créer une issue sur GitHub
-- Contacter le support : contact@infinityweb.tn
+For any questions or issues:
+- Create an issue on GitHub
+- Contact support: contact@infinityweb.tn
 
-## 🙏 Remerciements
+## 🙏 Acknowledgments
 
 - WordPress Community
 - Contributors
